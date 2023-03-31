@@ -6,7 +6,7 @@ This site isn't really working at the moment. I definitely plan on re-submitting
 
 ## Installation
 
-No installation required. [Click here](https://julie-mac.github.io/quiz/) to view the deployed webpage and create yourself a unique password!
+No installation required. [Click here](https://julie-mac.github.io/quiz/) to view the deployed webpage and take the quiz!
 
 ![Screenshot of Javascript Quiz](./assets/images/quiz-screenshot.png)
 
