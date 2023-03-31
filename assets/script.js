@@ -68,12 +68,15 @@ startButton.addEventListener("click", runQuiz);
 function displayQuestion() {
    
     const questionContainer = document.getElementById("question-container");
+    questionContainer.innerHTML = "";
+
     const questionTitle = document.createElement("h2");
     questionTitle.textContent = questions[currentQuestion].question;
     questionContainer.appendChild(questionTitle);
 
     const choiceContainer = document.createElement("div");
     choiceContainer.setAttribute("id", "choice-container");
+
     for (i=0 ; i<questions[currentQuestion].choices.length ; i++) {
         const choice = document.createElement("button");
         choice.textContent = questions[currentQuestion].choices[i];
@@ -92,13 +95,30 @@ function displayQuestion() {
             timeLeft = timeLeft - 10;
             questionContainer.appendChild(display);
         }
+        //Moves on to the next question
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+           displayQuestion();
+        } else {
+                clearInterval(timerSet);
+                displayScore();
+        }
     })
-    }
+    } 
     questionContainer.appendChild(choiceContainer);
 
+    return score;
 }
 
-    function runQuiz() {
+function displayScore() {
+        questionContainer.innerHTML = "";
+        var showScore = document.createElement("p");
+        showScore.textContent = `Your final score is ${score}/${questions.length}`;
+        questionContainer.appendChild(showScore);
+    }
+
+function runQuiz() {
     startButton.style.display = "none";
 
     const timerSet = setInterval(function() {
@@ -109,4 +129,7 @@ function displayQuestion() {
         }
     }, 1000);
 
-    displayQuestion(); }
+    displayQuestion();
+ }
+
+    
